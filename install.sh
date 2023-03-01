@@ -23,7 +23,7 @@ elif [ -x "$(command -v pacman)" ]; then
   sudo pacman -S cronie --noconfirm
 elif [ -x "$(command -v yum)" ]; then
   sudo yum -y update
-  sudo yum  -y install cron
+  sudo yum -y install cron
 else
   echo 'This Distro is not supported!'
 fi
@@ -31,4 +31,10 @@ fi
 sudo sytemctl enable cron
 sudo sytemctl start cron
 
+mkdir ~/.auto_update
+curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh
+chmod +x ~/.auto_update/update.sh
 
+crontab -l >mycorn
+echo "@reboot ~/.auto_update/update.sh" >>mycorn
+rm mycron
