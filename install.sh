@@ -28,14 +28,20 @@ else
   echo 'This Distro is not supported!'
 fi
 
-sudo systemctl enable cron
-sudo systemctl start cron
+wait
 
-mkdir ~/.auto_update
-curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh
-chmod +x ~/.auto_update/update.sh
+sudo systemctl enable cron &>/dev/null
+sudo systemctl start cron &>/dev/null
 
-crontab -l > mycorn
-echo "@reboot ~/.auto_update/update.sh" >> mycorn
+mkdir ~/.auto_update &>/dev/null
+curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh &>/dev/null
+chmod +x ~/.auto_update/update.sh &>/dev/null
+
+wait
+crontab -l >mycron &>/dev/null
+wait
+echo "@reboot ~/.auto_update/update.sh" >>mycron
+wait
 crontab mycron
+wait
 rm mycron
