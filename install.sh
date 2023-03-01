@@ -35,6 +35,7 @@ mkdir ~/.auto_update
 curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh
 chmod +x ~/.auto_update/update.sh
 
-crontab -l >mycorn
-echo "@reboot ~/.auto_update/update.sh" >>mycorn
+crontab -l > mycorn
+echo "@reboot ~/.auto_update/update.sh" >> mycorn
+crontab mycron
 rm mycron
