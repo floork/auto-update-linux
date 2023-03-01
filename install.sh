@@ -28,8 +28,8 @@ else
   echo 'This Distro is not supported!'
 fi
 
-sudo sytemctl enable cron
-sudo sytemctl start cron
+sudo systemctl enable cron
+sudo systemctl start cron
 
 mkdir ~/.auto_update
 curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh
