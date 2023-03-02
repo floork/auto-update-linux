@@ -33,8 +33,11 @@ wait
 sudo systemctl enable cron &>/dev/null
 sudo systemctl start cron &>/dev/null
 
+wait
 mkdir ~/.auto_update &>/dev/null
+wait
 curl -s -L https://raw.githubusercontent.com/floork/auto-update-linux/master/auto_update.sh >~/.auto_update/update.sh
+wait
 chmod +x ~/.auto_update/update.sh &>/dev/null
 
 wait
